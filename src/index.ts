@@ -1,4 +1,4 @@
-import { Application, Sprite } from 'pixi.js'
+import { Application, Loader, Sprite } from 'pixi.js'
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -9,11 +9,24 @@ const app = new Application({
 	height: 480
 });
 
-const clampy: Sprite = Sprite.from("clampy.png");
 
-clampy.anchor.set(0.5);
+Loader.shared.add({url: "./vaguito.png", name: "myVaguito"})
+Loader.shared.add({url: "./clampy.png", name: "myClampy"})
+
+Loader.shared.onComplete.add(()=>{
+	const clampy: Sprite = Sprite.from("myVaguito");
+
+	console.log("Hello World!", clampy.width,clampy.height)
+
+//clampy.anchor.set(0);
 
 clampy.x = 300 //app.screen.width / 2;
 clampy.y = 300 //app.screen.height / 2;
 
 app.stage.addChild(clampy);
+
+}
+)
+
+Loader.shared.load()
+
