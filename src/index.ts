@@ -1,35 +1,61 @@
-import { Application, Loader, Sprite } from 'pixi.js'
+import { Application,Loader} from 'pixi.js'
+import { assets } from './assets';
+import { Scene } from './Scene';
+
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
 	resolution: window.devicePixelRatio || 1,
 	autoDensity: true,
 	backgroundColor: 0x649595,
-	width: 640,
-	height: 480
+	width: 1280,
+	height: 720,
 });
 
+window.addEventListener("resize", ()=>{
 
-Loader.shared.add({url: "./vaguito.png", name: "myVaguito"})
-Loader.shared.add({url: "./clampy.png", name: "myClampy"})
+	console.log("resized");
+
+	const scaleX= window.innerWidth/app.screen.width
+	const scaleY=window.innerHeight/app.screen.height
+
+	const scale=Math.min(scaleX,scaleY)
+
+	const gameWidth=Math.round(app.screen.width*scale)
+	const gameHeight= Math.round(app.screen.height*scale)
+
+	const marginHorizontal=Math.floor((window.innerWidth-gameWidth)/2)
+	const marginVertical=Math.floor((window.innerHeight-gameHeight)/2)
+
+
+	app.view.style.width=gameWidth+"px"
+	app.view.style.height=gameHeight+"px"
+	app.view.style.marginLeft=marginHorizontal+"px"
+	app.view.style.marginRight=marginHorizontal+"px"
+	app.view.style.marginTop=marginVertical+"px"
+	app.view.style.marginBottom=marginVertical+"px"
+
+
+
+});
+
+window.dispatchEvent(new Event("resize"))
+
+Loader.shared.add(assets)
 
 Loader.shared.onComplete.add(()=>{
-	const clampy: Sprite = Sprite.from("myVaguito");
 
-	const proporción = clampy.width/clampy.height
-	
-	clampy.height=app.screen.height
-	clampy.width=clampy.height*proporción
-	
+	const myScene=new Scene();
+	app.stage.addChild(myScene);
 
-	console.log("Hello World!", clampy.width,clampy.height)
 
-//clampy.anchor.set(0);
 
-clampy.x = 0 //app.screen.width / 2;
-clampy.y = 0 //app.screen.height / 2;
 
-app.stage.addChild(clampy);
+//alert(vaguitoconFlor.toGlobal(flower.position))
+
+//flower.position.set(flower.parent.toLocal(new Point(window.innerWidth/2,window.innerHeight/2)).x,flower.parent.toLocal(new Point(window.innerWidth/2,window.innerHeight/2)).y)
+
+
 
 }
 )
