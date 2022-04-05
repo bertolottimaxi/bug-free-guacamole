@@ -1,12 +1,12 @@
 import { Container } from "pixi.js";
-import { VaguitoFlor } from "./VaguitoFlor";
+import { Minotauro } from "./Minotauro";
 
 export class Scene extends Container{
     constructor(){
         super();
 
-        const vaguitoconFlor:VaguitoFlor =new VaguitoFlor();
-        this.addChild(vaguitoconFlor);
+        const minotauro:Minotauro =new Minotauro();
+        this.addChild(minotauro);
 
     }
 }
