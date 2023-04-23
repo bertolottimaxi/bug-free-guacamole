@@ -15,7 +15,7 @@ export class Poof extends PhysicsContainer
 
         this.poof=new AnimatedSprite(
             [
-                Texture.from("poof01"),
+               // Texture.from("poof01"),
                 Texture.from("poof02"),
                 Texture.from("poof03"),
                 Texture.from("poof04"),
