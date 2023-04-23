@@ -67,8 +67,8 @@ export class TickerScene extends Container implements IUpdateable {
             this.gameSpeed += 1;
             
             this.timePassed = 0;            
-            this.platforms.push(new Platform(WIDTH/2,Math.random()*1080))
-            this.world.addChild(this.platforms[this.platforms.length-1])
+            //this.platforms.push(new Platform(WIDTH/2,Math.random()*1080))
+            //this.world.addChild(this.platforms[this.platforms.length-1])
         }
 
         

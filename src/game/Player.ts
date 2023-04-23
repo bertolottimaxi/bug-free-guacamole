@@ -58,7 +58,7 @@ export class Player extends PhysicsContainer implements IHitbox
        
         this.hitbox = new Graphics();
         this.hitbox.beginFill(0xFF00FF, 0);
-        this.hitbox.drawRect(0,0,this.gorduCorriendo.width, this.gorduCorriendo.height);
+        this.hitbox.drawRect(0,0,this.gorduCorriendo.width/4, this.gorduCorriendo.height);
         this.hitbox.endFill();
         this.hitbox.x = 0;
         this.hitbox.y = 0;
@@ -108,7 +108,7 @@ export class Player extends PhysicsContainer implements IHitbox
             this.acceleration.y = Player.GRAVITY * 5;
         }else
         {
-            this.acceleration.y = Player.GRAVITY;
+            this.acceleration.y = 0//Player.GRAVITY;
         }
 
     }
