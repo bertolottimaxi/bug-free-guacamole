@@ -28,7 +28,7 @@ export  class Minotauro extends Container{
         cabeza.position.set(-5,0)
         cara.position.set(95,125)
 
-      this.addChild(brazoizquierdo);
+      //this.addChild(brazoizquierdo);
         //this.addChild(cuerpo);
         //this.addChild(brazoderecho);
         //this.addChild(cabeza);

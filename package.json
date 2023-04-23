@@ -3,7 +3,10 @@
   "scripts": {
     "start": "webpack serve --mode=development",
     "build": "run-s clean build-only",
-    "build-only": "webpack --mode=production",
+    "exportar": "webpack",
+    "servir": "webpack serve --mode=development",
+    
+    "build-only": "webpack --config=webpack.config.js",
     "clean": "rimraf dist"
   },
   "dependencies": {

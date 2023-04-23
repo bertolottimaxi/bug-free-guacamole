@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
                 },
                 progress: true,
             },
-            port: 1234, host: '0.0.0.0'
+            port: 8080, host: '0.0.0.0'
         },
 
         // Web games are bigger than pages, disable the warnings that our game is too big.
@@ -56,7 +56,11 @@ module.exports = (env, argv) => {
                     test: /\.ts(x)?$/,
                     loader: 'ts-loader',
                     exclude: /node_modules/
-                }
+                },
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    type: 'asset/resource',
+                  },
             ]
         },
         resolve: {
@@ -70,12 +74,13 @@ module.exports = (env, argv) => {
         plugins: [
             // Copy our static assets to the final build
             new CopyPlugin({
-                patterns: [{ from: 'static/' }],
+                patterns: [{ from: 'static/'}],
+                
             }),
 
             // Make an index.html from the template
             new HtmlWebpackPlugin({
-                template: 'src/index.ejs',
+                template: 'src/index.ejs',                                
                 hash: true,
                 minify: false
             })
