@@ -23,6 +23,8 @@ export class TickerScene extends Container implements IUpdateable {
 
     private timePassed:number = 0;
 
+    private menos:Boolean = false
+
     constructor()
     {
         super();
@@ -112,6 +114,17 @@ export class TickerScene extends Container implements IUpdateable {
         
 
         this.platforms = this.platforms.filter((elem) => !elem.destroyed);        
-        this.background.tilePosition.x -= this.gameSpeed * deltaTime/1000;
+        
+
+        if(this.background.tilePosition.x < -WIDTH)            
+                this.menos=true
+        else if(this.background.tilePosition.x>0)            
+             this.menos=false             
+            
+            
+        if(this.menos)
+            this.background.tilePosition.x += this.gameSpeed * deltaTime/1000;
+        else
+            this.background.tilePosition.x -= this.gameSpeed * deltaTime/1000;
     }
 }

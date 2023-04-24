@@ -6,8 +6,8 @@ import './diagonal.png';
 import { TickerScene } from './scenes/TickerScene';
 import { Keyboard } from './utils/Keyboard';
 
-export const WIDTH=1920
-export const HEIGHT=1080
+export const WIDTH=1920/3//1920
+export const HEIGHT=1080/3//1080
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
